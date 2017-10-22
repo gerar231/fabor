@@ -2,7 +2,6 @@
 
 set -e
 
-./build.sh
 
 REGISTRY=faborimages.azurecr.io
 NAME=website
