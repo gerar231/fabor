@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'Circular-Std-Bold';
+    src: url('../fonts/CircularStd-Bold/CircularStd-Bold.eot');
+	src: url('../fonts/CircularStd-Bold/CircularStd-Bold?#iefix') format('embedded-opentype'),
+		url('../fonts/CircularStd-Bold/CircularStd-Bold.woff') format('woff'),
+		url('../fonts/CircularStd-Bold/CircularStd-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik-Thin';
+    src: url("../fonts/Graphik/Graphik-Thin.otf");
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-family: "Circular-Std-Bold";
+    color: white;
+}
+
+.text {
+    font-family: "Graphik-Thin";
+}
+
+.home-page {
+    height:100vh;
+    background: url("../@Bg.png") no-repeat fixed center; 
+}
+
+.content-page {
+    background-color: black;
+}
+
+.card-panel.hoverable {
+    background-color: #07D159;
+}
+
+.card-panel.hoverable:hover {
+    background-color: #4A90E2;
+    cursor: pointer;
+}
+
+.col.s3.col-card {
+    background: #424242;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.col.s3.col-card .row.card-header {
+    color: white;
+    background: #F5A623;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.col.s3.col-card .row.card-header .col.s8 .row.title {
+    font-size: 20px;
+    margin: 0px;
+}
+
+.col.s3.col-card .row.card-header .col.s8 .row.text {
+    margin: 0px;
+}
+
+.col.s3.col-card .row.text.middle {
+    color: white;
+    border-bottom: 2px solid #757575;
+    margin: 0px;
+    height: 40px;
+}
+
+.img-circular{
+    width: 75px;
+    height: 75px;
+    background-image: url('../maxresdefault.jpg');
+    background-size: cover;
+    display: block;
+    border-radius: 37.5px;
+    -webkit-border-radius: 37.5px;
+    -moz-border-radius: 50px;
+    margin: 5px;
+}
+
+
+
+
+
