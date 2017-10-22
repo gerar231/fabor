@@ -159,8 +159,9 @@
     $(document).ready(function () {
         // get JSON objects
         var contracts;
+        var users;
         $.ajax({
-            url: "http://40.71.201.178:4000/contracts/search",
+            url: "http://52.170.205.106:4000/contracts/search",
             type: "GET",
             success: function(data, status, other) {
                 contracts = data;
@@ -168,15 +169,25 @@
             dataType: 'json'
         });
 
+        $.ajax({
+            url: "http://52.170.205.106:4000/users/all",
+            type: "GET",
+            success: function(data, status, other) {
+                users = data;
+                console.log(users);
+            }, 
+            dataType: 'json'
+        });
+
         //jQuery.get("http://40.71.201.178:4000/contracts/search", function(data, status, other){contracts = data; console.log(data);}, JSON);
 
+        $( document ).ajaxComplete( function() {
         $( document ).ajaxComplete(function() {
 
             console.log(contracts);
             //populate slick
             for (i = 0; i < contracts.length; i++) {
-
-                $(".carousel-row").append(createCard("Odd Job", "Swagger", "Joe", "dawgs", "4.9/5", "1.0mi", "5.5"));
+                $(".carousel-row").append(createCard("Job Number " + contracts[i].ContractID, contracts[i].Description, users[i].Username, users[i].Email, users[i].Feedback, contracts[i].Location, contracts[i].HoursAgrd));
             }
 
             //implement slick
@@ -210,7 +221,7 @@
                         <div class="row text middle valign-wrapper"> Name: ` + name + ` </div>
                         <div class="row text middle valign-wrapper"> Email: ` + email + ` </div>
                         <div class="row text middle valign-wrapper"> Rating: ` + rating + ` </div>
-                        <div class="row text middle valign-wrapper"> Distance: ` + distance + ` </div>
+                        <div class="row text middle valign-wrapper"> Zip Code: ` + distance + ` </div>
                         <div class="row text no-line middle valign-wrapper"> Hours: ` + hours + ` </div>
                 </div>
             `;
@@ -230,6 +241,7 @@
                 $("#offer-form").modal('open');
             });
         });
+    });
     });
 </script>
 
