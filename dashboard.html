@@ -21,13 +21,15 @@
     <div class="container">
         <div class="row" style="margin-top: 20px;">
             <div class="col s3" style="overflow:none;">
-                <a href="dashboard.html"><image src="@logo.png" style="width:100%; cursor: pointer;"> </image></a>
+                <a href="dashboard.html">
+                    <image src="@logo.png" style="width:100%; cursor: pointer;"> </image>
+                </a>
             </div>
             <div class="col s8 title right-align" style="color: #4A90E2; cursor: pointer;">
-                    My Account
+                My Account
             </div>
             <div class="col s1 text valign-wrapper">
-                    <a  href="index.html" style="color:red; cursor: pointer;"> Logout </a>
+                <a href="index.html" style="color:red; cursor: pointer;"> Logout </a>
             </div>
         </div>
         <div class="row">
@@ -43,6 +45,29 @@
             </div>
         </div>
         <div class="row carousel-row">
+        </div>
+    </div>
+    <!-- Request form Modal -->
+    <!-- Modal Structure -->
+    <div id="request-form" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <!-- Offer form Modal -->
+    <!-- Modal Structure -->
+    <div id="offer-form" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
     </div>
 </body>
@@ -86,12 +111,14 @@
         `;
     }
 
-    $("#request").click(function(){
-        $("request-form").toggle();
+    $('.modal').modal();
+
+    $("#request").click(function () {
+        $('#request-form').modal('open');
     });
 
-    $("#offer").click(function(){
-        $("offer-form").toggle();
+    $("#offer").click(function () {
+        $("#offer-form").modal('open');
     });
 </script>
 
