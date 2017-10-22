@@ -25,7 +25,7 @@ docker push $TAGGED_IMAGE
 echo "Success"
 
 az container delete -g fabor-services \
-                         --name $NAME
+                         --name $NAME \
                          --yes
 
 az container create -g fabor-services \
@@ -34,7 +34,7 @@ az container create -g fabor-services \
                          --cpu 1 \
                          --memory 1 \
                          --ip-address public \
-                         --port 4000 \
+                         --port 80 \
                          --registry-password iRrUvXnQEqccPGztvW=hBmEFv9SfBefL
 
 
