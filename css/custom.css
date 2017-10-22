@@ -23,10 +23,6 @@
     color: white;
 }
 
-.text {
-    font-family: "Graphik-Thin";
-}
-
 .home-page {
     height:100vh;
     background: url("../@Bg.png") no-repeat fixed center; 
@@ -87,6 +83,33 @@
     margin: 5px;
 }
 
+.modal .modal-content .title {
+    color: #07D159;
+}
+
+.submit-button {
+    background-color: #07D159;
+}
+
+
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #4A90E2;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #4A90E2;
+    box-shadow: 0 1px 0 0 #4A90E2;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #4A90E2;
+  }
+
+  .input-field label.active {
+    border-bottom: 1px solid #4A90E2;
+    box-shadow: 0 1px 0 0 #4A90E2;
+  }
 
 
 

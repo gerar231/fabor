@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
@@ -25,7 +25,7 @@
                     <image src="@logo.png" style="width:100%; cursor: pointer;"> </image>
                 </a>
             </div>
-            <div class="col s8 title right-align" style="color: #4A90E2; cursor: pointer;">
+            <div id="my-account-link" class="col s8 title right-align" style="color: #4A90E2; cursor: pointer;">
                 My Account
             </div>
             <div class="col s1 text valign-wrapper">
@@ -51,11 +51,49 @@
     <!-- Modal Structure -->
     <div id="request-form" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h2 class="title"> Request a favor: </h2>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">help</i>
+                            <input id="icon_telephone" type="text" class="validate">
+                            <label for="icon_telephone">I need help with... (skill area)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">subject</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">Specifically... (details)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">access_time</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">For about this long... (hours you can afford)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">location_on</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">I'm located near... (approximate area/neighborhood)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">date_range</i>
+                            <input id="icon_prefix" type="text" class="validate">
+                            <label for="icon_prefix">I'm free during... (days/times)</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat text" style="color: black;">Submit</a>
         </div>
     </div>
 
@@ -63,15 +101,59 @@
     <!-- Modal Structure -->
     <div id="offer-form" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h2 class="title"> Offer a favor: </h2>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">help</i>
+                    <input id="icon_telephone" type="text" class="validate">
+                    <label for="icon_telephone">I can help with... (skill area)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">subject</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Specifically... (details)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">access_time</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">For about this long... (hours you can volunteer)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">I'm located near... (approximate area/neighborhood)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">date_range</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">I'm free during... (days/times)</label>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat text" style="color: black;"> Submit </a>
+        </div>
+    </div>
+
+    <!-- My Account Modal -->
+    <!-- Modal Structure -->
+    <div id="my-account" class="modal">
+        <div class="modal-content">
+            <h2 class="title center-align"> My Account </h2>
+            <h1 class="title center-align"> {hours} Hr </h1>
+            <h5 class="title center-align"> available time-credits</h5>
         </div>
     </div>
 </body>
-<script type="text/javascript" src="slick/slick.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script>
     $(document).ready(function () {
         // get JSON objects
@@ -84,11 +166,13 @@
         //implement slick
         $(".carousel-row").slick({
             infinite: true,
-            arrows: false,
+            arrows: true,
+            //nextArrow: '<i class="large material-icons">navigate_next</i>', 
+            //prevArrow: '<i class="large material-icons">navigate_before</i>',
             slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
-            autoplaySpeed: 1000,
+            autoplaySpeed: 1500,
         });
     });
 
@@ -106,12 +190,16 @@
                     <div class="row text middle valign-wrapper"> Email: ` + email + ` </div>
                     <div class="row text middle valign-wrapper"> Rating: ` + rating + ` </div>
                     <div class="row text middle valign-wrapper"> Distance: ` + distance + ` </div>
-                    <div class="row text middle valign-wrapper"> Hours: ` + hours + ` </div>
+                    <div class="row text no-line middle valign-wrapper"> Hours: ` + hours + ` </div>
             </div>
         `;
     }
 
     $('.modal').modal();
+
+    $("#my-account-link").click(function() {
+        $("#my-account").modal('open');
+    })
 
     $("#request").click(function () {
         $('#request-form').modal('open');
