@@ -111,6 +111,13 @@
     box-shadow: 0 1px 0 0 #4A90E2;
   }
 
+  input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: none;
+    box-shadow: none;
+  }
 
+  input[type=text]:not(.browser-default):focus:not([readonly])+label {
+    color: #4A90E2;
+  }
 
 
