@@ -158,9 +158,10 @@
 <script>
     $(document).ready(function () {
         // get JSON objects
-        var contracts;
-        var users;
-        $.ajax({
+        var contracts = new Array();
+        var users = new Array();
+        // original data requests
+        /* $.ajax({
             url: "http://52.170.205.106:4000/contracts/search",
             type: "GET",
             success: function(data, status, other) {
@@ -177,71 +178,96 @@
                 console.log(users);
             }, 
             dataType: 'json'
-        });
+        }); */
+
+        // hard-coded data to demonstrate functionality
+        for (var i = 0; i < 5; i++) {
+            var contract = {
+                ContractID: "123456" + i,
+                Description: "Arbitrary description of services required",
+                Location: "Arbitrary, WA",
+                HoursAgrd: i
+
+            }
+            var user = {
+                Username: "user" + i,
+                Feedback: "Info about user" + i,
+                Email: "user" + i + "@web.com"
+            }
+            contracts.push(contract);
+            users.push(user);
+        }
 
         //jQuery.get("http://40.71.201.178:4000/contracts/search", function(data, status, other){contracts = data; console.log(data);}, JSON);
 
-        $( document ).ajaxComplete( function() {
-        $( document ).ajaxComplete(function() {
 
-            console.log(contracts);
-            //populate slick
-            for (i = 0; i < contracts.length; i++) {
-                $(".carousel-row").append(createCard("Job Number " + contracts[i].ContractID, contracts[i].Description, users[i].Username, users[i].Email, users[i].Feedback, contracts[i].Location, contracts[i].HoursAgrd));
-            }
+        console.log(contracts);
+        //populate slick
+        for (i = 0; i < contracts.length; i++) {
+            $(".carousel-row").append(createCard("Job Number " + contracts[i].ContractID, contracts[i].Description,
+                users[i].Username, users[i].Email, users[i].Feedback, contracts[i].Location, contracts[
+                    i].HoursAgrd));
+        }
 
-            //implement slick
-            $(".carousel-row").slick({
-                infinite: true,
-                arrows: true,
-                nextArrow: `<svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" style="z-index: 10;position: absolute;bottom: 50%;right: -3%;cursor: pointer;">
+        //implement slick
+        $(".carousel-row").slick({
+            infinite: true,
+            arrows: true,
+            nextArrow: `<svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" style="z-index: 10;position: absolute;bottom: 50%;right: -3%;cursor: pointer;">
                                 <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
                                 <path d="M0-.25h24v24H0z" fill="none"/>
                             </svg> `,
-                prevArrow: `<svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" style="z-index: 10;position: absolute;bottom: 50%;left: -3%;cursor: pointer;">
+            prevArrow: `<svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" style="z-index: 10;position: absolute;bottom: 50%;left: -3%;cursor: pointer;">
                                 <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
                                 <path d="M0-.5h24v24H0z" fill="none"/>
                             </svg>`,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1500,
-            });
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+        });
 
-            function createCard(title, descrip, name, email, rating, distance, hours) {
-                return `
+        function createCard(title, descrip, name, email, rating, distance, hours) {
+            return `
                 <div class="col s3 col-card">
                         <div class="row card-header valign-wrapper"> 
                             <div class="col s4"> <div class="img-circular"> </div> </div>  
                             <div class="col s8"> 
-                                <div class="row title"> ` + title + ` </div>
-                                <div class="row text"> ` + descrip + ` </div>
+                                <div class="row title"> ` +
+                title + ` </div>
+                                <div class="row text"> ` + descrip +
+                ` </div>
                             </div>  
                         </div>
-                        <div class="row text middle valign-wrapper"> Name: ` + name + ` </div>
-                        <div class="row text middle valign-wrapper"> Email: ` + email + ` </div>
-                        <div class="row text middle valign-wrapper"> Rating: ` + rating + ` </div>
-                        <div class="row text middle valign-wrapper"> Zip Code: ` + distance + ` </div>
-                        <div class="row text no-line middle valign-wrapper"> Hours: ` + hours + ` </div>
+                        <div class="row text middle valign-wrapper"> Name: ` +
+                name + ` </div>
+                        <div class="row text middle valign-wrapper"> Email: ` +
+                email + ` </div>
+                        <div class="row text middle valign-wrapper"> Rating: ` +
+                rating +
+                ` </div>
+                        <div class="row text middle valign-wrapper"> Zip Code: ` +
+                distance +
+                ` </div>
+                        <div class="row text no-line middle valign-wrapper"> Hours: ` +
+                hours + ` </div>
                 </div>
             `;
-            }
+        }
 
-            $('.modal').modal();
+        $('.modal').modal();
 
-            $("#my-account-link").click(function () {
-                $("#my-account").modal('open');
-            })
+        $("#my-account-link").click(function () {
+            $("#my-account").modal('open');
+        })
 
-            $("#request").click(function () {
-                $('#request-form').modal('open');
-            });
-
-            $("#offer").click(function () {
-                $("#offer-form").modal('open');
-            });
+        $("#request").click(function () {
+            $('#request-form').modal('open');
         });
-    });
+
+        $("#offer").click(function () {
+            $("#offer-form").modal('open');
+        });
     });
 </script>
 
